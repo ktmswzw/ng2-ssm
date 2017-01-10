@@ -1,8 +1,11 @@
-import {Component, ViewEncapsulation, OnInit, Input} from '@angular/core';
+import {Component, ViewEncapsulation, OnInit, Input, Output} from '@angular/core';
 import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
-import {LoginService, Result} from "./login.service";
+import {LoginService, LoginResult} from "./login.service";
 import {Md5} from 'ts-md5/dist/md5'
 import {Router} from "@angular/router";
+import {User} from "../../entity/User";
+import Globals = require('../../share/globals');
+
 
 @Component({
   selector: 'login',
@@ -12,7 +15,7 @@ import {Router} from "@angular/router";
 })
 export class Login implements OnInit {
 
-  @Input() user: Result ;
+  @Input() result: LoginResult ;
   public form:FormGroup;
   public username:AbstractControl;
   public password:AbstractControl;
@@ -37,11 +40,17 @@ export class Login implements OnInit {
       // your code goes here
       console.log(values);
       // const lashPassword = values["password"]+"HHOO" as string;Md5.hashStr(lashPassword) as string
-      this.service.login(values["username"], values["password"],"WEB","").subscribe(user => {
-        this.user = user;
-        console.info("-----------");
-        console.info(this.user);
-        //this.router.navigate(['/pages', ""]);
+      this.service.login(values["username"], values["password"],"WEB","").subscribe(data => {
+        this.result = data;
+        Globals.__USER = data.result;
+        console.info(Globals.__USER.token);
+        console.info("----");
+        if(this.result.apistatus == "0"){
+          this.router.navigate(['/pages', ""]);
+        }
+        else{
+
+        }
       },error => {
         console.log(error);
       });
