@@ -14,7 +14,7 @@ export class Login implements OnInit {
 
   @Input() user: Result ;
   public form:FormGroup;
-  public telephone:AbstractControl;
+  public username:AbstractControl;
   public password:AbstractControl;
   public submitted:boolean = false;
 
@@ -24,23 +24,24 @@ export class Login implements OnInit {
 
   constructor(fb:FormBuilder,private service: LoginService,private router: Router) {
     this.form = fb.group({
-      'telephone': ['', Validators.compose([Validators.required, Validators.minLength(11)])],
+      'username': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])]
     });
-    this.telephone = this.form.controls['telephone'];
+    this.username = this.form.controls['username'];
     this.password = this.form.controls['password'];
   }
 
   public onSubmit(values:Object):void {
     this.submitted = true;
-    console.log("111");
     if (this.form.valid) {
       // your code goes here
       console.log(values);
-      const lashPassword = values["password"]+"HHOO" as string;
-      this.service.login(values["telephone"], Md5.hashStr(lashPassword) as string,"H5","").subscribe(user => {
+      // const lashPassword = values["password"]+"HHOO" as string;Md5.hashStr(lashPassword) as string
+      this.service.login(values["username"], values["password"],"WEB","").subscribe(user => {
         this.user = user;
-        this.router.navigate(['/pages', ""]);
+        console.info("-----------");
+        console.info(this.user);
+        //this.router.navigate(['/pages', ""]);
       },error => {
         console.log(error);
       });

@@ -26,14 +26,13 @@ export class LoginService extends RESTClient {
       console.log(name, '=', values)
     });
   })
-  public login(@Query('telephone') telephone?: string,@Query('password') password?: string,@Query('device') device?: string,@Query('deviceToken') deviceToken?: string): Observable<Result> {
+  public login(@Query('username') username?: string,@Query('password') password?: string,@Query('device') device?: string,@Query('deviceToken') deviceToken?: string): Observable<Result> {
     return null;
   }
 
 }
 
 export class Result {
-
   constructor(
     public apistatus?: String,
     public result?: JSON,

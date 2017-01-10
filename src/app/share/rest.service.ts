@@ -24,7 +24,7 @@ export class RESTClient {
   public constructor(@Inject(Http) protected http: Http) {}
 
   protected getBaseUrl(): string {
-    return "http://localhost:8888";
+    return "http://localhost:8000";
   };
 
   protected getDefaultHeaders(): Object {
