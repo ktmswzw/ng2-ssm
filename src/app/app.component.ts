@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import {Routes, Router} from '@angular/router';
 import './app.loader.ts';
 import { Component, ViewEncapsulation, ViewContainerRef } from '@angular/core';
 import { GlobalState } from './global.state';
@@ -33,6 +33,7 @@ export class App {
               private _imageLoader: BaImageLoaderService,
               private _spinner: BaThemeSpinner,
               private toastyConfig: ToastyConfig,
+              private router: Router,
               private _config: BaThemeConfig,
               private _menuService: BaMenuService,
               private viewContainerRef: ViewContainerRef) {
@@ -49,6 +50,7 @@ export class App {
 
     this.toastyConfig.theme = 'default';
     this.addToast();
+
   }
 
   public ngAfterViewInit(): void {
@@ -71,7 +73,7 @@ export class App {
       title: "My title222",
       msg: "The message22",
       showClose: true,
-      timeout: 1000,
+      timeout: 3000,
       theme: 'default',
       onAdd: (toast:ToastData) => {
         console.log('Toast ' + toast.id + ' has been added!');
@@ -80,6 +82,8 @@ export class App {
         console.log('Toast ' + toast.id + ' has been removed!');
       }
     };
+
+
     // Add see all possible types in one shot
     // this.toastyService.info(toastOptions);
     // this.toastyService.success(toastOptions);

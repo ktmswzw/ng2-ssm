@@ -8,12 +8,15 @@ export class User {
   constructor(
     private id:number,
     public nickname:string,
-    private avatar:string,
-    private phone:string,
+    public avatar:string,
+    public phone:string,
     public token:string,
-    private organization:string,
-    private organization_id:number,
-    private module:Module
+    public organization:string,
+    public organization_id:number,
+    public error_en:string,
+    public error_code:string,
+    public error:string,
+    public module:Module
   ){}
 
 }

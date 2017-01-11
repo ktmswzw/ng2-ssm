@@ -1,3 +1,4 @@
+<ng2-toasty [position]="'top-center'"></ng2-toasty>
 <div class="auth-main">
   <div class="auth-block">
     <h1>Sign in</h1>
@@ -7,14 +8,14 @@
         <label for="username" class="col-sm-2 control-label">Username</label>
 
         <div class="col-sm-10">
-          <input [formControl]="username" class="form-control" id="username" placeholder="Username">
+          <input [formControl]="username" class="form-control" id="username" value="admin" placeholder="Username">
         </div>
       </div>
       <div class="form-group row" [ngClass]="{'has-error': (!password.valid && password.touched), 'has-success': (password.valid && password.touched)}">
         <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
 
         <div class="col-sm-10">
-          <input [formControl]="password" type="password" class="form-control" id="inputPassword3" placeholder="Password">
+          <input [formControl]="password" type="password" class="form-control" value="123qwe" id="inputPassword3" placeholder="Password">
         </div>
       </div>
       <div class="form-group row">

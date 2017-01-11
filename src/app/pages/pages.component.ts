@@ -3,6 +3,7 @@ import {SlimLoadingBarService} from "ng2-slim-loading-bar";
 import {Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError} from "@angular/router";
 import {ToastyService} from 'ng2-toasty';
 import {GlobalState} from "../global.state";
+import {GlobalData} from "../share/globals";
 
 @Component({
   selector: 'pages',
@@ -42,6 +43,7 @@ export class Pages {
   constructor(private router: Router,
               private slimLoader: SlimLoadingBarService,
               private toastyService:ToastyService,
+              private _globalData: GlobalData,
               private _state:GlobalState) {
 
     this.sub = this.router.events.subscribe(event => {
@@ -55,12 +57,22 @@ export class Pages {
         console.log('Loading complete1');
         this.slimLoader.complete();
         this._state.notifyDataChanged('menu.isCollapsed',true);
-        this.toastyService.error("ok");
+        this.timeout();
       }
     }, (error: any) => {
       console.log('Loading complete2');
       this.slimLoader.complete();
     });
+  }
+
+  private timeout(){
+    if(this._globalData._user == undefined){
+      this.toastyService.error("登陆超时");
+      setTimeout(() => {
+        this.router.navigateByUrl('/login');
+      }, 3000);
+
+    }
   }
 
   ngOnInit() {
