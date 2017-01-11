@@ -1,7 +1,8 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {SlimLoadingBarService} from "ng2-slim-loading-bar";
 import {Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError} from "@angular/router";
-import {ToastyService, ToastyConfig,ToastOptions, ToastData} from 'ng2-toasty';
+import {ToastyService} from 'ng2-toasty';
+import {GlobalState} from "../global.state";
 
 @Component({
   selector: 'pages',
@@ -10,7 +11,7 @@ import {ToastyService, ToastyConfig,ToastOptions, ToastData} from 'ng2-toasty';
   template: `
     <ba-sidebar></ba-sidebar>
     <ba-page-top></ba-page-top>
-    <div class="al-main">
+    <div  class="al-main">
       <ng2-toasty [position]="'top-center'"></ng2-toasty>
       <ng2-slim-loading-bar></ng2-slim-loading-bar>
       <div class="al-content">
@@ -36,12 +37,12 @@ import {ToastyService, ToastyConfig,ToastOptions, ToastData} from 'ng2-toasty';
 export class Pages {
   title = "";
   private sub: any;
-
+  isMenuCollapsed: boolean = true;
 
   constructor(private router: Router,
               private slimLoader: SlimLoadingBarService,
               private toastyService:ToastyService,
-              private toastyConfig: ToastyConfig) {
+              private _state:GlobalState) {
 
     this.sub = this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
@@ -53,38 +54,13 @@ export class Pages {
         event instanceof NavigationError) {
         console.log('Loading complete1');
         this.slimLoader.complete();
-        this.addToast();
+        this._state.notifyDataChanged('menu.isCollapsed',true);
+        this.toastyService.error("ok");
       }
     }, (error: any) => {
       console.log('Loading complete2');
       this.slimLoader.complete();
     });
-    this.toastyConfig.theme = 'default';
-  }
-
-  addToast() {
-    // Just add default Toast with title only
-    this.toastyService.default('Hi there');
-    // Or create the instance of ToastOptions
-    var toastOptions:ToastOptions = {
-      title: "My title",
-      msg: "The message",
-      showClose: true,
-      timeout: 5000,
-      theme: 'default',
-      onAdd: (toast:ToastData) => {
-        console.log('Toast ' + toast.id + ' has been added!');
-      },
-      onRemove: function(toast:ToastData) {
-        console.log('Toast ' + toast.id + ' has been removed!');
-      }
-    };
-    // Add see all possible types in one shot
-    this.toastyService.info(toastOptions);
-    this.toastyService.success(toastOptions);
-    this.toastyService.wait(toastOptions);
-    this.toastyService.error(toastOptions);
-    this.toastyService.warning(toastOptions);
   }
 
   ngOnInit() {

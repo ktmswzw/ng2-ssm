@@ -9,6 +9,7 @@ import { BaMenuService } from './theme';
 import {ComponentsHelper } from 'ng2-bootstrap';
 
 import { MENU } from './app.menu';
+import {ToastOptions, ToastData, ToastyConfig} from "ng2-toasty";
 /*
  * App Component
  * Top Level Component
@@ -31,6 +32,7 @@ export class App {
   constructor(private _state: GlobalState,
               private _imageLoader: BaImageLoaderService,
               private _spinner: BaThemeSpinner,
+              private toastyConfig: ToastyConfig,
               private _config: BaThemeConfig,
               private _menuService: BaMenuService,
               private viewContainerRef: ViewContainerRef) {
@@ -44,6 +46,9 @@ export class App {
     this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
       this.isMenuCollapsed = isCollapsed;
     });
+
+    this.toastyConfig.theme = 'default';
+    this.addToast();
   }
 
   public ngAfterViewInit(): void {
@@ -56,6 +61,31 @@ export class App {
   private _loadImages(): void {
     // register some loaders
     BaThemePreloader.registerLoader(this._imageLoader.load(layoutPaths.images.root + 'sky-bg.jpg'));
+  }
+  //
+  private addToast() {
+    // Just add default Toast with title only
+    // this.toastyService.default('Hi there');
+    // Or create the instance of ToastOptions
+    let toastOptions:ToastOptions = {
+      title: "My title222",
+      msg: "The message22",
+      showClose: true,
+      timeout: 1000,
+      theme: 'default',
+      onAdd: (toast:ToastData) => {
+        console.log('Toast ' + toast.id + ' has been added!');
+      },
+      onRemove: function(toast:ToastData) {
+        console.log('Toast ' + toast.id + ' has been removed!');
+      }
+    };
+    // Add see all possible types in one shot
+    // this.toastyService.info(toastOptions);
+    // this.toastyService.success(toastOptions);
+    // this.toastyService.wait(toastOptions);
+    // this.toastyService.error(toastOptions);
+    // this.toastyService.warning(toastOptions);
   }
 
   private _fixModals(): void {
