@@ -2,18 +2,23 @@
 import {User} from "../entity/User";
 import {GlobalState} from "../global.state";
 import {Injectable} from "@angular/core";
-import {LocalStorage, SessionStorage} from "angular2-localstorage/WebStorage";
+import {CoolLocalStorage} from "angular2-cool-storage";
 
 @Injectable()
 export class GlobalData {
-  @LocalStorage()
-  public _user: User = undefined;
+  localStorage: CoolLocalStorage;
+  user: User = undefined;
+  constructor(private _state:GlobalState,localStorage: CoolLocalStorage) {
+    this.localStorage = localStorage;
+    this._state.subscribe("user.login",(userData) => {
+      this.user = userData;
+      this.localStorage.setItem('user.login',this.user.token);
 
-  constructor(private _state:GlobalState) {
-    this._state.subscribe("user.login",(userState) => {
-      this._user = userState ;
-      console.info(this._user.nickname);
+      console.info(localStorage.getItem('user.login'));
+      console.info(this.localStorage.getItem('user.login'));
     })
   }
+
+
 
 }

@@ -66,7 +66,7 @@ export class Pages {
   }
 
   private timeout(){
-    if(this._globalData._user == undefined){
+    if(this._globalData.user == undefined){
       this.toastyService.error("登陆超时");
       setTimeout(() => {
         this.router.navigateByUrl('/login');

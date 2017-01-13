@@ -1,14 +1,19 @@
 FROM node:latest
 
+#//sudo npm install -g cnpm --registry=https://registry.npm.taobao.org
+
 RUN git clone https://github.com/akveo/ng2-admin.git /var/www \
     && cd /var/www \
-    && npm install --global rimraf \
-    && npm run clean \
-    && npm install --global webpack webpack-dev-server typescript@beta \
-    && npm install \
-    && npm run prebuild:prod && npm run build:prod
+    && sudo cnpm install --global rimraf \
+    && sudo cnpm run clean \
+    && sudo cnpm install --global webpack webpack-dev-server typescript@beta \
+    && sudo cnpm install \
+    && sudo cnpm run prebuild:prod && cnpm run build:prod
 
 EXPOSE 8080
 
 WORKDIR /var/www
-ENTRYPOINT ["npm", "run", "server:prod"]
+ENTRYPOINT ["cnpm", "run", "server:prod"]
+
+
+sudo cnpm install ng2-slim-loading-bar

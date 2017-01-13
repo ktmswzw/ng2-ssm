@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
-import { LocalStorageService } from "angular2-localstorage/LocalStorageEmitter";
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -21,6 +20,7 @@ import { PagesModule } from './pages/pages.module';
 import { RESTClient } from "./share/rest.service";
 import { LoginService } from "./pages/login/login.service";
 import { GlobalData } from "./share/globals";
+import {CoolStorageModule} from "angular2-cool-storage";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -51,20 +51,20 @@ type StoreType = {
     ReactiveFormsModule,
     NgaModule.forRoot(),
     PagesModule,
-    routing
+    routing,
+    CoolStorageModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
     APP_PROVIDERS,
     RESTClient,
-    LoginService,
-    LocalStorageService
+    LoginService
   ]
 })
 
 export class AppModule {
 
-  constructor(public appRef: ApplicationRef, public appState: AppState,storageService: LocalStorageService) {
+  constructor(public appRef: ApplicationRef, public appState: AppState) {
   }
 
   hmrOnInit(store: StoreType) {
