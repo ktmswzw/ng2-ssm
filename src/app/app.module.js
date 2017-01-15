@@ -5,28 +5,32 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var core_1 = require("@angular/core");
-var platform_browser_1 = require("@angular/platform-browser");
-var forms_1 = require("@angular/forms");
-var http_1 = require("@angular/http");
-var router_1 = require("@angular/router");
-var hmr_1 = require("@angularclass/hmr");
+var core_1 = require('@angular/core');
+var platform_browser_1 = require('@angular/platform-browser');
+var forms_1 = require('@angular/forms');
+var http_1 = require('@angular/http');
+var router_1 = require('@angular/router');
+var hmr_1 = require('@angularclass/hmr');
 /*
  * Platform and Environment providers/directives/pipes
  */
-var environment_1 = require("./environment");
-var app_routing_1 = require("./app.routing");
+var environment_1 = require('./environment');
+var app_routing_1 = require('./app.routing');
 // App is our top level component
-var app_component_1 = require("./app.component");
-var app_service_1 = require("./app.service");
-var global_state_1 = require("./global.state");
-var nga_module_1 = require("./theme/nga.module");
-var pages_module_1 = require("./pages/pages.module");
+var app_component_1 = require('./app.component');
+var app_service_1 = require('./app.service');
+var global_state_1 = require('./global.state');
+var nga_module_1 = require('./theme/nga.module');
+var pages_module_1 = require('./pages/pages.module');
 var rest_service_1 = require("./share/rest.service");
+var login_service_1 = require("./pages/login/login.service");
+var globals_1 = require("./share/globals");
+var angular2_cool_storage_1 = require("angular2-cool-storage");
 // Application wide providers
 var APP_PROVIDERS = [
     app_service_1.AppState,
-    global_state_1.GlobalState
+    global_state_1.GlobalState,
+    globals_1.GlobalData
 ];
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -68,29 +72,31 @@ var AppModule = (function () {
         store.disposeOldHosts();
         delete store.disposeOldHosts;
     };
+    AppModule = __decorate([
+        core_1.NgModule({
+            bootstrap: [app_component_1.App],
+            declarations: [
+                app_component_1.App
+            ],
+            imports: [
+                platform_browser_1.BrowserModule,
+                http_1.HttpModule,
+                router_1.RouterModule,
+                forms_1.FormsModule,
+                forms_1.ReactiveFormsModule,
+                nga_module_1.NgaModule.forRoot(),
+                pages_module_1.PagesModule,
+                app_routing_1.routing,
+                angular2_cool_storage_1.CoolStorageModule
+            ],
+            providers: [
+                environment_1.ENV_PROVIDERS,
+                APP_PROVIDERS,
+                rest_service_1.RESTClient,
+                login_service_1.LoginService
+            ]
+        })
+    ], AppModule);
     return AppModule;
 }());
-AppModule = __decorate([
-    core_1.NgModule({
-        bootstrap: [app_component_1.App],
-        declarations: [
-            app_component_1.App
-        ],
-        imports: [
-            platform_browser_1.BrowserModule,
-            http_1.HttpModule,
-            router_1.RouterModule,
-            forms_1.FormsModule,
-            forms_1.ReactiveFormsModule,
-            nga_module_1.NgaModule.forRoot(),
-            pages_module_1.PagesModule,
-            app_routing_1.routing
-        ],
-        providers: [
-            environment_1.ENV_PROVIDERS,
-            APP_PROVIDERS,
-            rest_service_1.RESTClient
-        ]
-    })
-], AppModule);
 exports.AppModule = AppModule;

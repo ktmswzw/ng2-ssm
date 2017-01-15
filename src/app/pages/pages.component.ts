@@ -4,6 +4,7 @@ import {Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationErro
 import {ToastyService} from 'ng2-toasty';
 import {GlobalState} from "../global.state";
 import {GlobalData} from "../share/globals";
+import {User} from "../entity/User";
 
 @Component({
   selector: 'pages',
@@ -66,7 +67,7 @@ export class Pages {
   }
 
   private timeout(){
-    if(this._globalData.user == undefined){
+    if(this._globalData.getUser() instanceof User){
       this.toastyService.error("登陆超时");
       setTimeout(() => {
         this.router.navigateByUrl('/login');

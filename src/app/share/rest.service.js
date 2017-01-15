@@ -8,10 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var http_1 = require("@angular/http");
-var core_1 = require("@angular/core");
-require("rxjs/add/operator/map");
-var util_1 = require("./util");
+var http_1 = require('@angular/http');
+var core_1 = require('@angular/core');
+require('rxjs/add/operator/map');
+var util_1 = require('./util');
 /**
  * Angular 2 RESTClient class.
  *
@@ -23,7 +23,7 @@ var RESTClient = (function () {
         this.http = http;
     }
     RESTClient.prototype.getBaseUrl = function () {
-        return null;
+        return "http://localhost:8000";
     };
     ;
     RESTClient.prototype.getDefaultHeaders = function () {
@@ -49,12 +49,12 @@ var RESTClient = (function () {
     RESTClient.prototype.responseInterceptor = function (res) {
         return res;
     };
+    RESTClient = __decorate([
+        core_1.Injectable(),
+        __param(0, core_1.Inject(http_1.Http))
+    ], RESTClient);
     return RESTClient;
 }());
-RESTClient = __decorate([
-    core_1.Injectable(),
-    __param(0, core_1.Inject(http_1.Http))
-], RESTClient);
 exports.RESTClient = RESTClient;
 /**
  * Set the base URL of REST resource

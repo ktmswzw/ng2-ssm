@@ -5,8 +5,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var BaMenu = (function () {
     function BaMenu(_router, _service, _state) {
         var _this = this;
@@ -65,23 +65,23 @@ var BaMenu = (function () {
         }
         return false;
     };
+    __decorate([
+        core_1.Input()
+    ], BaMenu.prototype, "sidebarCollapsed", void 0);
+    __decorate([
+        core_1.Input()
+    ], BaMenu.prototype, "menuHeight", void 0);
+    __decorate([
+        core_1.Output()
+    ], BaMenu.prototype, "expandMenu", void 0);
+    BaMenu = __decorate([
+        core_1.Component({
+            selector: 'ba-menu',
+            encapsulation: core_1.ViewEncapsulation.None,
+            styles: [require('./baMenu.scss')],
+            template: require('./baMenu.html')
+        })
+    ], BaMenu);
     return BaMenu;
 }());
-__decorate([
-    core_1.Input()
-], BaMenu.prototype, "sidebarCollapsed", void 0);
-__decorate([
-    core_1.Input()
-], BaMenu.prototype, "menuHeight", void 0);
-__decorate([
-    core_1.Output()
-], BaMenu.prototype, "expandMenu", void 0);
-BaMenu = __decorate([
-    core_1.Component({
-        selector: 'ba-menu',
-        encapsulation: core_1.ViewEncapsulation.None,
-        styles: [require('./baMenu.scss')],
-        template: require('./baMenu.html')
-    })
-], BaMenu);
 exports.BaMenu = BaMenu;

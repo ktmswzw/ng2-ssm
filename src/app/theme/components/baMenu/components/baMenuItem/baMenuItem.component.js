@@ -5,7 +5,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var core_1 = require("@angular/core");
+var core_1 = require('@angular/core');
 var BaMenuItem = (function () {
     function BaMenuItem() {
         this.child = false;
@@ -20,26 +20,26 @@ var BaMenuItem = (function () {
         this.toggleSubMenu.emit($event);
         return false;
     };
+    __decorate([
+        core_1.Input()
+    ], BaMenuItem.prototype, "menuItem", void 0);
+    __decorate([
+        core_1.Input()
+    ], BaMenuItem.prototype, "child", void 0);
+    __decorate([
+        core_1.Output()
+    ], BaMenuItem.prototype, "itemHover", void 0);
+    __decorate([
+        core_1.Output()
+    ], BaMenuItem.prototype, "toggleSubMenu", void 0);
+    BaMenuItem = __decorate([
+        core_1.Component({
+            selector: 'ba-menu-item',
+            encapsulation: core_1.ViewEncapsulation.None,
+            styles: [require('./baMenuItem.scss')],
+            template: require('./baMenuItem.html')
+        })
+    ], BaMenuItem);
     return BaMenuItem;
 }());
-__decorate([
-    core_1.Input()
-], BaMenuItem.prototype, "menuItem", void 0);
-__decorate([
-    core_1.Input()
-], BaMenuItem.prototype, "child", void 0);
-__decorate([
-    core_1.Output()
-], BaMenuItem.prototype, "itemHover", void 0);
-__decorate([
-    core_1.Output()
-], BaMenuItem.prototype, "toggleSubMenu", void 0);
-BaMenuItem = __decorate([
-    core_1.Component({
-        selector: 'ba-menu-item',
-        encapsulation: core_1.ViewEncapsulation.None,
-        styles: [require('./baMenuItem.scss')],
-        template: require('./baMenuItem.html')
-    })
-], BaMenuItem);
 exports.BaMenuItem = BaMenuItem;

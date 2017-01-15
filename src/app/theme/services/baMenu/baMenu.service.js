@@ -5,8 +5,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var core_1 = require("@angular/core");
-var BehaviorSubject_1 = require("rxjs/BehaviorSubject");
+var core_1 = require('@angular/core');
+var BehaviorSubject_1 = require('rxjs/BehaviorSubject');
 var BaMenuService = (function () {
     function BaMenuService(_router) {
         this._router = _router;
@@ -113,9 +113,9 @@ var BaMenuService = (function () {
         object.selected = this._router.isActive(this._router.createUrlTree(object.route.paths), object.pathMatch === 'full');
         return object;
     };
+    BaMenuService = __decorate([
+        core_1.Injectable()
+    ], BaMenuService);
     return BaMenuService;
 }());
-BaMenuService = __decorate([
-    core_1.Injectable()
-], BaMenuService);
 exports.BaMenuService = BaMenuService;

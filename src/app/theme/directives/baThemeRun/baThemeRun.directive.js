@@ -5,8 +5,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var core_1 = require("@angular/core");
-var theme_1 = require("../../../theme");
+var core_1 = require('@angular/core');
+var theme_1 = require('../../../theme');
 var BaThemeRun = (function () {
     function BaThemeRun(_baConfig) {
         this._baConfig = _baConfig;
@@ -28,14 +28,14 @@ var BaThemeRun = (function () {
         this._classes.push(cls);
         this.classesString = this._classes.join(' ');
     };
+    __decorate([
+        core_1.HostBinding('class')
+    ], BaThemeRun.prototype, "classesString", void 0);
+    BaThemeRun = __decorate([
+        core_1.Directive({
+            selector: '[baThemeRun]'
+        })
+    ], BaThemeRun);
     return BaThemeRun;
 }());
-__decorate([
-    core_1.HostBinding('class')
-], BaThemeRun.prototype, "classesString", void 0);
-BaThemeRun = __decorate([
-    core_1.Directive({
-        selector: '[baThemeRun]'
-    })
-], BaThemeRun);
 exports.BaThemeRun = BaThemeRun;

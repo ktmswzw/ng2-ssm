@@ -13,59 +13,50 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var core_1 = require("@angular/core");
-var rest_service_1 = require("../../share/rest.service");
-var HttpService = (function (_super) {
-    __extends(HttpService, _super);
-    function HttpService(http) {
-        var _this = _super.call(this, http) || this;
-        _this.http = http;
-        return _this;
+var core_1 = require('@angular/core');
+var rest_service_1 = require('../../share/rest.service');
+var LoginService = (function (_super) {
+    __extends(LoginService, _super);
+    function LoginService(http) {
+        _super.call(this, http);
+        this.http = http;
     }
-    HttpService.prototype.requestInterceptor = function (req) {
+    LoginService.prototype.requestInterceptor = function (req) {
         return req;
     };
-    HttpService.prototype.responseInterceptor = function (res) {
+    LoginService.prototype.responseInterceptor = function (res) {
         return res;
     };
-    HttpService.prototype.getPosts = function (userId) {
+    LoginService.prototype.login = function (username, password, device, deviceToken) {
         return null;
     };
-    HttpService.prototype.createPost = function (post) {
-        return null;
-    };
-    return HttpService;
+    __decorate([
+        rest_service_1.GET('/api/login'),
+        rest_service_1.Produces(function (res) {
+            res.headers.forEach(function (values, name) {
+                // console.log(name, '=', values)
+            });
+        }),
+        __param(0, rest_service_1.Query('username')),
+        __param(1, rest_service_1.Query('password')),
+        __param(2, rest_service_1.Query('device')),
+        __param(3, rest_service_1.Query('deviceToken'))
+    ], LoginService.prototype, "login", null);
+    LoginService = __decorate([
+        core_1.Injectable(),
+        rest_service_1.DefaultHeaders({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        })
+    ], LoginService);
+    return LoginService;
 }(rest_service_1.RESTClient));
-__decorate([
-    rest_service_1.GET('/posts'),
-    rest_service_1.Produces(function (res) {
-        res.headers.forEach(function (values, name) {
-            console.log(name, '=', values);
-        });
-    }),
-    __param(0, rest_service_1.Query('$userId'))
-], HttpService.prototype, "getPosts", null);
-__decorate([
-    rest_service_1.POST('/posts'),
-    rest_service_1.Produces(),
-    __param(0, rest_service_1.Body)
-], HttpService.prototype, "createPost", null);
-HttpService = __decorate([
-    core_1.Injectable(),
-    rest_service_1.BaseUrl('https://jsonplaceholder.typicode.com'),
-    rest_service_1.DefaultHeaders({
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    })
-], HttpService);
-exports.HttpService = HttpService;
-var Post = (function () {
-    function Post(userId, title, body, id) {
-        this.userId = userId;
-        this.title = title;
-        this.body = body;
-        this.id = id;
+exports.LoginService = LoginService;
+var LoginResult = (function () {
+    function LoginResult(apistatus, result) {
+        this.apistatus = apistatus;
+        this.result = result;
     }
-    return Post;
+    return LoginResult;
 }());
-exports.Post = Post;
+exports.LoginResult = LoginResult;

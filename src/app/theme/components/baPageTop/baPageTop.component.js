@@ -5,7 +5,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var core_1 = require("@angular/core");
+var core_1 = require('@angular/core');
 var BaPageTop = (function () {
     function BaPageTop(_state) {
         var _this = this;
@@ -24,14 +24,14 @@ var BaPageTop = (function () {
     BaPageTop.prototype.scrolledChanged = function (isScrolled) {
         this.isScrolled = isScrolled;
     };
+    BaPageTop = __decorate([
+        core_1.Component({
+            selector: 'ba-page-top',
+            styles: [require('./baPageTop.scss')],
+            template: require('./baPageTop.html'),
+            encapsulation: core_1.ViewEncapsulation.None
+        })
+    ], BaPageTop);
     return BaPageTop;
 }());
-BaPageTop = __decorate([
-    core_1.Component({
-        selector: 'ba-page-top',
-        styles: [require('./baPageTop.scss')],
-        template: require('./baPageTop.html'),
-        encapsulation: core_1.ViewEncapsulation.None
-    })
-], BaPageTop);
 exports.BaPageTop = BaPageTop;

@@ -7,18 +7,26 @@ import {CoolLocalStorage} from "angular2-cool-storage";
 @Injectable()
 export class GlobalData {
   localStorage: CoolLocalStorage;
-  user: User = undefined;
   constructor(private _state:GlobalState,localStorage: CoolLocalStorage) {
-    this.localStorage = localStorage;
-    this._state.subscribe("user.login",(userData) => {
-      this.user = userData;
-      this.localStorage.setItem('user.login',this.user.token);
-
-      console.info(localStorage.getItem('user.login'));
-      console.info(this.localStorage.getItem('user.login'));
+      this.localStorage = localStorage;
+      this._state.subscribe("user.login",(userData) => {
+      this.localStorage.setObject('user.login',userData);
     })
   }
 
-
-
+  public getUser(): User {
+    let user:User = undefined;
+    try {
+      user = this.localStorage.getObject('user.login');
+    }
+    catch (e){
+      if(e instanceof RangeError){
+        console.info("login storage is error");
+      }
+    }
+    finally
+    {
+      return user;
+    }
+  }
 }

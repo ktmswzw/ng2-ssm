@@ -5,20 +5,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var core_1 = require("@angular/core");
-var common_1 = require("@angular/common");
-var pages_routing_1 = require("./pages.routing");
-var nga_module_1 = require("../theme/nga.module");
-var pages_component_1 = require("./pages.component");
+var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
+var pages_routing_1 = require('./pages.routing');
+var nga_module_1 = require('../theme/nga.module');
+var pages_component_1 = require('./pages.component');
+var ng2_toasty_1 = require("ng2-toasty");
+var ng2_slim_loading_bar_1 = require("ng2-slim-loading-bar");
 var PagesModule = (function () {
     function PagesModule() {
     }
+    PagesModule = __decorate([
+        core_1.NgModule({
+            imports: [common_1.CommonModule, nga_module_1.NgaModule, pages_routing_1.routing,
+                ng2_toasty_1.ToastyModule.forRoot(),
+                ng2_slim_loading_bar_1.SlimLoadingBarModule.forRoot(),],
+            declarations: [pages_component_1.Pages]
+        })
+    ], PagesModule);
     return PagesModule;
 }());
-PagesModule = __decorate([
-    core_1.NgModule({
-        imports: [common_1.CommonModule, nga_module_1.NgaModule, pages_routing_1.routing],
-        declarations: [pages_component_1.Pages]
-    })
-], PagesModule);
 exports.PagesModule = PagesModule;

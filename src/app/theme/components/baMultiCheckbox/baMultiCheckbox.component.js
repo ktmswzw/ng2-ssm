@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var core_1 = require("@angular/core");
+var core_1 = require('@angular/core');
 var BaMultiCheckbox = (function () {
     function BaMultiCheckbox(state) {
         this.model = state;
@@ -36,19 +36,19 @@ var BaMultiCheckbox = (function () {
         };
     };
     BaMultiCheckbox.prototype.registerOnTouched = function (fn) { this.onTouch = fn; };
+    __decorate([
+        core_1.Input()
+    ], BaMultiCheckbox.prototype, "baMultiCheckboxClass", void 0);
+    __decorate([
+        core_1.Input()
+    ], BaMultiCheckbox.prototype, "propertiesMapping", void 0);
+    BaMultiCheckbox = __decorate([
+        core_1.Component({
+            selector: 'ba-multi-checkbox[ngModel]',
+            template: require('./baMultiCheckbox.html'),
+        }),
+        __param(0, core_1.Self())
+    ], BaMultiCheckbox);
     return BaMultiCheckbox;
 }());
-__decorate([
-    core_1.Input()
-], BaMultiCheckbox.prototype, "baMultiCheckboxClass", void 0);
-__decorate([
-    core_1.Input()
-], BaMultiCheckbox.prototype, "propertiesMapping", void 0);
-BaMultiCheckbox = __decorate([
-    core_1.Component({
-        selector: 'ba-multi-checkbox[ngModel]',
-        template: require('./baMultiCheckbox.html'),
-    }),
-    __param(0, core_1.Self())
-], BaMultiCheckbox);
 exports.BaMultiCheckbox = BaMultiCheckbox;

@@ -1,5 +1,5 @@
 "use strict";
-var http_1 = require("@angular/http");
+var http_1 = require('@angular/http');
 /**
  * Builds custom descriptors
  *
@@ -30,14 +30,14 @@ var Builder = (function () {
     Builder.method = function (method) {
         return function (url) {
             return function (target, propertyKey, descriptor) {
-                var pPath = target[propertyKey + "_Path_parameters"];
-                var pQuery = target[propertyKey + "_Query_parameters"];
-                var pBody = target[propertyKey + "_Body_parameters"];
-                var pHeader = target[propertyKey + "_Header_parameters"];
+                var pPath = target[(propertyKey + "_Path_parameters")];
+                var pQuery = target[(propertyKey + "_Query_parameters")];
+                var pBody = target[(propertyKey + "_Body_parameters")];
+                var pHeader = target[(propertyKey + "_Header_parameters")];
                 descriptor.value = function () {
                     var args = [];
                     for (var _i = 0; _i < arguments.length; _i++) {
-                        args[_i] = arguments[_i];
+                        args[_i - 0] = arguments[_i];
                     }
                     // Body
                     var body = null;

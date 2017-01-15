@@ -5,8 +5,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var core_1 = require("@angular/core");
-var baChartistChart_loader_ts_1 = require("./baChartistChart.loader.ts");
+var core_1 = require('@angular/core');
+var baChartistChart_loader_ts_1 = require('./baChartistChart.loader.ts');
 var BaChartistChart = (function () {
     function BaChartistChart() {
         this.onChartReady = new core_1.EventEmitter();
@@ -25,36 +25,36 @@ var BaChartistChart = (function () {
             this.chart.detach();
         }
     };
+    __decorate([
+        core_1.Input()
+    ], BaChartistChart.prototype, "baChartistChartType", void 0);
+    __decorate([
+        core_1.Input()
+    ], BaChartistChart.prototype, "baChartistChartData", void 0);
+    __decorate([
+        core_1.Input()
+    ], BaChartistChart.prototype, "baChartistChartOptions", void 0);
+    __decorate([
+        core_1.Input()
+    ], BaChartistChart.prototype, "baChartistChartResponsive", void 0);
+    __decorate([
+        core_1.Input()
+    ], BaChartistChart.prototype, "baChartistChartClass", void 0);
+    __decorate([
+        core_1.Output()
+    ], BaChartistChart.prototype, "onChartReady", void 0);
+    __decorate([
+        core_1.ViewChild('baChartistChart')
+    ], BaChartistChart.prototype, "_selector", void 0);
+    BaChartistChart = __decorate([
+        core_1.Component({
+            selector: 'ba-chartist-chart',
+            encapsulation: core_1.ViewEncapsulation.None,
+            styles: [require('chartist/dist/chartist.css'), require('./baChartistChart.scss')],
+            template: require('./baChartistChart.html'),
+            providers: [],
+        })
+    ], BaChartistChart);
     return BaChartistChart;
 }());
-__decorate([
-    core_1.Input()
-], BaChartistChart.prototype, "baChartistChartType", void 0);
-__decorate([
-    core_1.Input()
-], BaChartistChart.prototype, "baChartistChartData", void 0);
-__decorate([
-    core_1.Input()
-], BaChartistChart.prototype, "baChartistChartOptions", void 0);
-__decorate([
-    core_1.Input()
-], BaChartistChart.prototype, "baChartistChartResponsive", void 0);
-__decorate([
-    core_1.Input()
-], BaChartistChart.prototype, "baChartistChartClass", void 0);
-__decorate([
-    core_1.Output()
-], BaChartistChart.prototype, "onChartReady", void 0);
-__decorate([
-    core_1.ViewChild('baChartistChart')
-], BaChartistChart.prototype, "_selector", void 0);
-BaChartistChart = __decorate([
-    core_1.Component({
-        selector: 'ba-chartist-chart',
-        encapsulation: core_1.ViewEncapsulation.None,
-        styles: [require('chartist/dist/chartist.css'), require('./baChartistChart.scss')],
-        template: require('./baChartistChart.html'),
-        providers: [],
-    })
-], BaChartistChart);
 exports.BaChartistChart = BaChartistChart;

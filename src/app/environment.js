@@ -1,8 +1,8 @@
 "use strict";
 // Angular 2
 // rc2 workaround
-var platform_browser_1 = require("@angular/platform-browser");
-var core_1 = require("@angular/core");
+var platform_browser_1 = require('@angular/platform-browser');
+var core_1 = require('@angular/core');
 // Environment Providers
 var PROVIDERS = [];
 // Angular debug tools in the dev console

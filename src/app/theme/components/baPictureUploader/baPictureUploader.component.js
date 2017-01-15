@@ -5,8 +5,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var core_1 = require("@angular/core");
-var ng2_uploader_1 = require("ng2-uploader/ng2-uploader");
+var core_1 = require('@angular/core');
+var ng2_uploader_1 = require('ng2-uploader/ng2-uploader');
 var BaPictureUploader = (function () {
     function BaPictureUploader(renderer, _uploader) {
         this.renderer = renderer;
@@ -75,29 +75,29 @@ var BaPictureUploader = (function () {
     BaPictureUploader.prototype._canUploadOnServer = function () {
         return !!this.uploaderOptions['url'];
     };
+    __decorate([
+        core_1.Input()
+    ], BaPictureUploader.prototype, "defaultPicture", void 0);
+    __decorate([
+        core_1.Input()
+    ], BaPictureUploader.prototype, "picture", void 0);
+    __decorate([
+        core_1.Input()
+    ], BaPictureUploader.prototype, "uploaderOptions", void 0);
+    __decorate([
+        core_1.Input()
+    ], BaPictureUploader.prototype, "canDelete", void 0);
+    __decorate([
+        core_1.ViewChild('fileUpload')
+    ], BaPictureUploader.prototype, "_fileUpload", void 0);
+    BaPictureUploader = __decorate([
+        core_1.Component({
+            selector: 'ba-picture-uploader',
+            styles: [require('./baPictureUploader.scss')],
+            template: require('./baPictureUploader.html'),
+            providers: [ng2_uploader_1.Ng2Uploader]
+        })
+    ], BaPictureUploader);
     return BaPictureUploader;
 }());
-__decorate([
-    core_1.Input()
-], BaPictureUploader.prototype, "defaultPicture", void 0);
-__decorate([
-    core_1.Input()
-], BaPictureUploader.prototype, "picture", void 0);
-__decorate([
-    core_1.Input()
-], BaPictureUploader.prototype, "uploaderOptions", void 0);
-__decorate([
-    core_1.Input()
-], BaPictureUploader.prototype, "canDelete", void 0);
-__decorate([
-    core_1.ViewChild('fileUpload')
-], BaPictureUploader.prototype, "_fileUpload", void 0);
-BaPictureUploader = __decorate([
-    core_1.Component({
-        selector: 'ba-picture-uploader',
-        styles: [require('./baPictureUploader.scss')],
-        template: require('./baPictureUploader.html'),
-        providers: [ng2_uploader_1.Ng2Uploader]
-    })
-], BaPictureUploader);
 exports.BaPictureUploader = BaPictureUploader;

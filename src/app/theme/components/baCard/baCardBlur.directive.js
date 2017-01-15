@@ -5,8 +5,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var core_1 = require("@angular/core");
-var baCardBlurHelper_service_1 = require("./baCardBlurHelper.service");
+var core_1 = require('@angular/core');
+var baCardBlurHelper_service_1 = require('./baCardBlurHelper.service');
 var BaCardBlur = (function () {
     function BaCardBlur(_baConfig, _baCardBlurHelper, _el) {
         this._baConfig = _baConfig;
@@ -48,18 +48,18 @@ var BaCardBlur = (function () {
     BaCardBlur.prototype._isEnabled = function () {
         return this._baConfig.get().theme.name == 'blur';
     };
+    __decorate([
+        core_1.HostBinding('class.card-blur')
+    ], BaCardBlur.prototype, "isEnabled", void 0);
+    __decorate([
+        core_1.HostListener('window:resize')
+    ], BaCardBlur.prototype, "_onWindowResize", null);
+    BaCardBlur = __decorate([
+        core_1.Directive({
+            selector: '[baCardBlur]',
+            providers: [baCardBlurHelper_service_1.BaCardBlurHelper]
+        })
+    ], BaCardBlur);
     return BaCardBlur;
 }());
-__decorate([
-    core_1.HostBinding('class.card-blur')
-], BaCardBlur.prototype, "isEnabled", void 0);
-__decorate([
-    core_1.HostListener('window:resize')
-], BaCardBlur.prototype, "_onWindowResize", null);
-BaCardBlur = __decorate([
-    core_1.Directive({
-        selector: '[baCardBlur]',
-        providers: [baCardBlurHelper_service_1.BaCardBlurHelper]
-    })
-], BaCardBlur);
 exports.BaCardBlur = BaCardBlur;

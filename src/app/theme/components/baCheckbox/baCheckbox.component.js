@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var core_1 = require("@angular/core");
+var core_1 = require('@angular/core');
 var BaCheckbox = (function () {
     function BaCheckbox(state) {
         this.model = state;
@@ -26,26 +26,26 @@ var BaCheckbox = (function () {
         };
     };
     BaCheckbox.prototype.registerOnTouched = function (fn) { this.onTouch = fn; };
+    __decorate([
+        core_1.Input()
+    ], BaCheckbox.prototype, "disabled", void 0);
+    __decorate([
+        core_1.Input()
+    ], BaCheckbox.prototype, "label", void 0);
+    __decorate([
+        core_1.Input()
+    ], BaCheckbox.prototype, "value", void 0);
+    __decorate([
+        core_1.Input()
+    ], BaCheckbox.prototype, "baCheckboxClass", void 0);
+    BaCheckbox = __decorate([
+        core_1.Component({
+            selector: 'ba-checkbox[ngModel]',
+            styles: [require('./baCheckbox.scss')],
+            template: require('./baCheckbox.html')
+        }),
+        __param(0, core_1.Self())
+    ], BaCheckbox);
     return BaCheckbox;
 }());
-__decorate([
-    core_1.Input()
-], BaCheckbox.prototype, "disabled", void 0);
-__decorate([
-    core_1.Input()
-], BaCheckbox.prototype, "label", void 0);
-__decorate([
-    core_1.Input()
-], BaCheckbox.prototype, "value", void 0);
-__decorate([
-    core_1.Input()
-], BaCheckbox.prototype, "baCheckboxClass", void 0);
-BaCheckbox = __decorate([
-    core_1.Component({
-        selector: 'ba-checkbox[ngModel]',
-        styles: [require('./baCheckbox.scss')],
-        template: require('./baCheckbox.html')
-    }),
-    __param(0, core_1.Self())
-], BaCheckbox);
 exports.BaCheckbox = BaCheckbox;

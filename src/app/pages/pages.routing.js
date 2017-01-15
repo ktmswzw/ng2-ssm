@@ -1,6 +1,6 @@
 "use strict";
-var router_1 = require("@angular/router");
-var pages_component_1 = require("./pages.component");
+var router_1 = require('@angular/router');
+var pages_component_1 = require('./pages.component');
 // noinspection TypeScriptValidateTypes
 var routes = [
     {
