@@ -67,12 +67,16 @@ export class Pages {
   }
 
   private timeout(){
-    if(this._globalData.getUser() instanceof User){
+    if(this._globalData.getUser() == undefined){
+      console.info("登陆超时");
       this.toastyService.error("登陆超时");
       setTimeout(() => {
         this.router.navigateByUrl('/login');
       }, 3000);
 
+    }
+    else {
+      console.info("登陆ok");
     }
   }
 

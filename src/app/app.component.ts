@@ -10,6 +10,8 @@ import {ComponentsHelper } from 'ng2-bootstrap';
 
 import { MENU } from './app.menu';
 import {ToastOptions, ToastData, ToastyConfig} from "ng2-toasty";
+import {GlobalData} from "./share/globals";
+import {User} from "./entity/User";
 /*
  * App Component
  * Top Level Component
@@ -28,6 +30,7 @@ import {ToastOptions, ToastData, ToastyConfig} from "ng2-toasty";
 export class App {
 
   isMenuCollapsed: boolean = false;
+  systemMenu: any = undefined;
 
   constructor(private _state: GlobalState,
               private _imageLoader: BaImageLoaderService,
@@ -35,10 +38,11 @@ export class App {
               private toastyConfig: ToastyConfig,
               private router: Router,
               private _config: BaThemeConfig,
+              private _data: GlobalData,
               private _menuService: BaMenuService,
               private viewContainerRef: ViewContainerRef) {
 
-    this._menuService.updateMenuByRoutes(<Routes>MENU);
+    this.initMenu();
 
     this._fixModals();
 
@@ -50,6 +54,19 @@ export class App {
 
     this.toastyConfig.theme = 'default';
     this.addToast();
+  }
+
+
+  private initMenu(){
+    console.info(this._data.getUser());
+    if(this._data.getUser() == undefined ){
+      console.info("----sys");
+      this._menuService.updateMenuByRoutes(<Routes>MENU);
+    }
+    else {
+      console.info("----default");
+      this._menuService.updateMenuByRoutes(this._data.getUser().module_tree.children);
+    }
 
   }
 

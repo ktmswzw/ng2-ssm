@@ -16,7 +16,7 @@ export class User {
     public error_en:string,
     public error_code:string,
     public error:string,
-    public module:Module
+    public module_tree:Module
   ){}
 
 }
